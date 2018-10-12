@@ -1,0 +1,22 @@
+[package]
+name = "kitafund"
+version = "0.1.0"
+authors = ["Sergey Sherkunov <leinlawun@leinlawun.org>",
+           "Andrey Makuha <amakuha1912@gmail.com>"]
+edition = "2018"
+homepage = "https://github.com/KITAPLATFORM/kitafund"
+repository = "https://github.com/KITAPLATFORM/kitafund"
+license = "MIT"
+
+[badges.travis-ci]
+repository = "https://github.com/KITAPLATFORM/kitafund"
+branch = "master"
+
+[dependencies]
+failure = "^0.1.2"
+serde = "^1.0.79"
+serde_derive = "^1.0.79"
+serde_json = "^1.0.32"
+rust-crypto-wasm = "^0.3.1"
+stdweb = "^0.4.9"
+yew = { git = "https://github.com/DenisKolodin/yew.git" }
