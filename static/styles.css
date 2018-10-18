@@ -9271,7 +9271,7 @@
    .lightTheme .block-list.dashboard-panel li>a {
     background-color:transparent!important
    }
-   .lightTheme .block-list.dashboard-panel li.active>a,.lightTheme .block-list.dashboard-panel li>a.active {
+   .lightTheme .block-list.dashboard-panel li.active>a,.lightTheme .block-list.dashboard-panel li>button.active {
     opacity:1
    }
    .lightTheme .block-list li>a span:first-child {
@@ -9689,10 +9689,10 @@
     border-color:#444;
     background-color:#444!important
    }
-   .olDarkTheme a {
+   .olDarkTheme button {
     color:#4a90e2
    }
-   .olDarkTheme a:active,.olDarkTheme a:focus,.olDarkTheme a:hover {
+   .olDarkTheme button:active,.olDarkTheme a:focus,.olDarkTheme button:hover {
     color:#5c9be5
    }
    .olDarkTheme label,.olDarkTheme label>span {
@@ -10786,7 +10786,7 @@
     background-color:transparent;
     text-transform:none
    }
-   .account-drop-down a:active.button,.account-drop-down a:hover.button {
+   .account-drop-down button:active.button,.account-drop-down button:hover.button {
     background-color:transparent!important
    }
    .clickable {
