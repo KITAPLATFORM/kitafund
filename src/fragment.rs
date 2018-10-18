@@ -8,7 +8,6 @@ pub enum Msg {
     Dashboard,
     Redeem,
     Send,
-    Exchange
 }
 
 impl Component for Model {
@@ -75,7 +74,6 @@ impl Model {
     fn view_login_name(&self) -> Html<Self> {
         html! {
             <>
-                </div>
                 <div class="grid-block shrink overflow-visible account-drop-down",>
                     <div class="action-sheet-container", data-closable="true",>
                         <div>
@@ -135,9 +133,6 @@ impl Model {
                         </li>
                         <li>
                             <button class="active", onclick=|_| Msg::Send,>{ "Send" }</button>
-                        </li>
-                        <li>
-                            <button class="active", onclick=|_| Msg::Exchange,>{ "Exchange" }</button>
                         </li>
                     </ul>
                 </section>
