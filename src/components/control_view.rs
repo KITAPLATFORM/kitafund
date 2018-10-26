@@ -21,12 +21,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+use super::{footer::Footer, header::Header, menu_view::MenuView};
 
-    App::<kitafund::App>::new().mount_to_body();
+pub enum ControlViewMsg {}
 
-    yew::run_loop();
+#[derive(Clone, PartialEq, Default)]
+pub struct ControlViewProps;
+
+pub struct ControlView;
+
+impl Component for ControlView {
+    type Message = ControlViewMsg;
+    type Properties = ControlViewProps;
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<ControlView> for ControlView {
+    fn view(&self) -> Html<Self> {
+        html! {
+            <div class="grid headed_footered control_view",>
+                <Header: />
+                <MenuView: />
+                <Footer: />
+            </div>
+        }
+    }
 }

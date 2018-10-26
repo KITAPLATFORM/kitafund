@@ -21,12 +21,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+mod components;
 
-fn main() {
-    yew::initialize();
+use yew::{html, html_impl, prelude::*};
 
-    App::<kitafund::App>::new().mount_to_body();
+use self::components::{content_view::ContentView, control_view::ControlView};
 
-    yew::run_loop();
+pub enum AppMsg {}
+
+pub struct App;
+
+impl Component for App {
+    type Message = AppMsg;
+    type Properties = ();
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<App> for App {
+    fn view(&self) -> Html<Self> {
+        html! {
+            <div class="grid app",>
+                <ControlView: />
+                <ContentView: />
+            </div>
+        }
+    }
 }

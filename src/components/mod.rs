@@ -21,12 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
-
-fn main() {
-    yew::initialize();
-
-    App::<kitafund::App>::new().mount_to_body();
-
-    yew::run_loop();
-}
+pub mod balances_view;
+pub mod button;
+pub mod content_view;
+pub mod control_view;
+pub mod dashboard_view;
+pub mod footer;
+pub mod header;
+pub mod menu_view;
+pub mod page_view;

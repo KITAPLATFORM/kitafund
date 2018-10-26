@@ -21,12 +21,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+use super::balances_view::BalancesView;
 
-    App::<kitafund::App>::new().mount_to_body();
+pub enum DashboardViewMsg {}
 
-    yew::run_loop();
+#[derive(Clone, PartialEq, Default)]
+pub struct DashboardViewProps;
+
+pub struct DashboardView;
+
+impl Component for DashboardView {
+    type Message = DashboardViewMsg;
+    type Properties = DashboardViewProps;
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<DashboardView> for DashboardView {
+    fn view(&self) -> Html<Self> {
+        html! {
+            <div class="grid dashboard_view",>
+                <BalancesView: />
+            </div>
+        }
+    }
 }

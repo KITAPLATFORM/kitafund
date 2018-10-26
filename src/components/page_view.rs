@@ -21,12 +21,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+use super::dashboard_view::DashboardView;
 
-    App::<kitafund::App>::new().mount_to_body();
+pub enum PageViewMsg {}
 
-    yew::run_loop();
+#[derive(Clone, PartialEq, Default)]
+pub struct PageViewProps;
+
+pub struct PageView;
+
+impl Component for PageView {
+    type Message = PageViewMsg;
+    type Properties = PageViewProps;
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<PageView> for PageView {
+    fn view(&self) -> Html<Self> {
+        html! {
+            <div class="grid page_view",>
+                <DashboardView: />
+            </div>
+        }
+    }
 }

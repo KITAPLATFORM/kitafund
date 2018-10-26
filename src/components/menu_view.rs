@@ -21,12 +21,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+use super::button::Button;
 
-    App::<kitafund::App>::new().mount_to_body();
+pub enum MenuViewMsg {}
 
-    yew::run_loop();
+#[derive(Clone, PartialEq, Default)]
+pub struct MenuViewProps;
+
+pub struct MenuView;
+
+impl Component for MenuView {
+    type Message = MenuViewMsg;
+    type Properties = MenuViewProps;
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<MenuView> for MenuView {
+    fn view(&self) -> Html<Self> {
+        html! {
+             <div class="grid menu_view",>
+                 <Button: title="Dashboard", />
+                 <Button: title="Send", />
+             </div>
+        }
+    }
 }

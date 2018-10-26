@@ -21,12 +21,54 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+pub enum ButtonMsg {
+    Clicked,
+}
 
-    App::<kitafund::App>::new().mount_to_body();
+#[derive(Clone, PartialEq, Default)]
+pub struct ButtonProps {
+    pub title: String,
+    pub on_click: Option<Callback<()>>,
+}
 
-    yew::run_loop();
+pub struct Button {
+    title: String,
+    on_click: Option<Callback<()>>,
+}
+
+impl Component for Button {
+    type Message = ButtonMsg;
+    type Properties = ButtonProps;
+
+    fn create(props: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {
+            title: props.title,
+            on_click: props.on_click,
+        }
+    }
+
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            ButtonMsg::Clicked => {
+                if let Some(ref on_click) = self.on_click {
+                    on_click.emit(())
+                }
+            },
+        }
+
+        false
+    }
+}
+
+impl Renderable<Button> for Button {
+    fn view(&self) -> Html<Self> {
+        html! {
+            <button type="button",
+                    onclick=|_| ButtonMsg::Clicked,>
+                {&self.title}
+            </button>
+        }
+    }
 }

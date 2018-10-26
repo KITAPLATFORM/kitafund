@@ -21,12 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+pub enum FooterMsg {}
 
-    App::<kitafund::App>::new().mount_to_body();
+#[derive(Clone, PartialEq, Default)]
+pub struct FooterProps;
 
-    yew::run_loop();
+pub struct Footer;
+
+impl Component for Footer {
+    type Message = FooterMsg;
+    type Properties = FooterProps;
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<Footer> for Footer {
+    fn view(&self) -> Html<Self> {
+        html! { <div class="footer",></div> }
+    }
 }

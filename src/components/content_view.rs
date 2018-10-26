@@ -21,12 +21,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use yew::prelude::*;
+use yew::{html, html_impl, prelude::*};
 
-fn main() {
-    yew::initialize();
+use super::{footer::Footer, header::Header, page_view::PageView};
 
-    App::<kitafund::App>::new().mount_to_body();
+pub enum ContentViewMsg {}
 
-    yew::run_loop();
+#[derive(Clone, PartialEq, Default)]
+pub struct ContentViewProps;
+
+pub struct ContentView;
+
+impl Component for ContentView {
+    type Message = ContentViewMsg;
+    type Properties = ContentViewProps;
+
+    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self {}
+    }
+
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
+        false
+    }
+}
+
+impl Renderable<ContentView> for ContentView {
+    fn view(&self) -> Html<Self> {
+        html! {
+            <div class="grid headed_footered content_view",>
+                <Header: />
+                <PageView: />
+                <Footer: />
+            </div>
+        }
+    }
 }
